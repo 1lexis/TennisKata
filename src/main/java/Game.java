@@ -35,6 +35,8 @@ public class Game {
             return "Deuce";
         } else if (server.getScore() == receiver.getScore()) {
             return scoreToString(server.getScore()) + " all";
+        } else if (server.getScore() >= 4) {
+            return "Advantage " + (server.getScore() > receiver.getScore() ? "in" : "out");
         } else {
             return scoreToString(server.getScore()) + " " + scoreToString(receiver.getScore());
         }

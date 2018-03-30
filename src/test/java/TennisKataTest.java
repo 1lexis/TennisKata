@@ -70,6 +70,38 @@ public class TennisKataTest {
         assertThat(game.getScore()).isEqualTo("Deuce");
     }
 
+    @Test
+    public void should_return_advantage_in_when_server_win_five_points_and_receveir_win_four_points() {
+        Game game = createGame();
+        incrementScore(game.getServer(), 5);
+        incrementScore(game.getReceiver(), 4);
+        assertThat(game.getScore()).isEqualTo("Advantage in");
+    }
+
+    @Test
+    public void should_return_advantage_out_when_server_win_four_points_and_receveir_win_five_points() {
+        Game game = createGame();
+        incrementScore(game.getServer(), 4);
+        incrementScore(game.getReceiver(), 5);
+        assertThat(game.getScore()).isEqualTo("Advantage out");
+    }
+
+    @Test
+    public void should_return_deuce_when_server_and_receveir_win_five_points() {
+        Game game = createGame();
+        incrementScore(game.getServer(), 5);
+        incrementScore(game.getReceiver(), 5);
+        assertThat(game.getScore()).isEqualTo("Deuce");
+    }
+
+    @Test
+    public void should_return_advantage_in_when_server_win_six_points_and_receveir_win_five_points() {
+        Game game = createGame();
+        incrementScore(game.getServer(), 6);
+        incrementScore(game.getReceiver(), 5);
+        assertThat(game.getScore()).isEqualTo("Advantage in");
+    }
+
     private Game createGame() {
         return new Game(new Player("Roger Federer"), new Player("Raphael Nadal"));
     }
