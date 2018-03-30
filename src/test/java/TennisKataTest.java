@@ -56,7 +56,7 @@ public class TennisKataTest {
     }
 
     @Test
-    public void should_return_forty_love_when_server_win_for_points() {
+    public void should_return_forty_love_when_server_win_four_points() {
         Game game = createGame();
         incrementScore(game.getServer(), 4);
         assertThat(game.getScore()).isEqualTo("Game Roger Federer");
