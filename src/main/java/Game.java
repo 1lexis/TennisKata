@@ -29,11 +29,10 @@ public class Game {
     }
 
     public String getScore() {
-        if (server.getScore() == 0 && receiver.getScore() == 0) {
-            return "Love all";
-        }
         if (server.getScore() == 4 && receiver.getScore() < 4) {
             return "Game " + server.getName();
+        } else if (server.getScore() == receiver.getScore()) {
+            return scoreToString(server.getScore()) + " all";
         } else {
             return scoreToString(server.getScore()) + " " + scoreToString(receiver.getScore());
         }

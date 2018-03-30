@@ -18,7 +18,23 @@ public class TennisKataTest {
     }
 
     @Test
-    public void should_return_thirty_love_when_server_win_two_points() {
+    public void should_return_fifteen_all_when_server_and_receveir_win_one_point() {
+        Game game = createGame();
+        game.getServer().winPoint();
+        game.getReceiver().winPoint();
+        assertThat(game.getScore()).isEqualTo("Fifteen all");
+    }
+
+    @Test
+    public void should_return_thirty_all_when_server_win_two_points() {
+        Game game = createGame();
+        game.getServer().winPoint();
+        game.getServer().winPoint();
+        assertThat(game.getScore()).isEqualTo("Thirty Love");
+    }
+
+    @Test
+    public void should_return_thirty_all_when_server_and_receveir_win_two_points() {
         Game game = createGame();
         game.getServer().winPoint();
         game.getServer().winPoint();
@@ -32,6 +48,18 @@ public class TennisKataTest {
         game.getServer().winPoint();
         game.getServer().winPoint();
         assertThat(game.getScore()).isEqualTo("Forty Love");
+    }
+
+    @Test
+    public void should_return_forty_love_when_server_and_receveir_win_three_points() {
+        Game game = createGame();
+        game.getServer().winPoint();
+        game.getServer().winPoint();
+        game.getServer().winPoint();
+        game.getReceiver().winPoint();
+        game.getReceiver().winPoint();
+        game.getReceiver().winPoint();
+        assertThat(game.getScore()).isEqualTo("Forty all");
     }
 
     @Test
