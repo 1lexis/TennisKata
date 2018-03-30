@@ -62,6 +62,14 @@ public class TennisKataTest {
         assertThat(game.getScore()).isEqualTo("Game Roger Federer");
     }
 
+    @Test
+    public void should_return_deuce_when_server_and_receveir_win_four_points() {
+        Game game = createGame();
+        incrementScore(game.getServer(), 4);
+        incrementScore(game.getReceiver(), 4);
+        assertThat(game.getScore()).isEqualTo("Deuce");
+    }
+
     private Game createGame() {
         return new Game(new Player("Roger Federer"), new Player("Raphael Nadal"));
     }

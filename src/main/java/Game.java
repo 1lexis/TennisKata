@@ -31,6 +31,8 @@ public class Game {
     public String getScore() {
         if (server.getScore() == 4 && receiver.getScore() < 4) {
             return "Game " + server.getName();
+        } else if (server.getScore() == receiver.getScore() && server.getScore() >= 4) {
+            return "Deuce";
         } else if (server.getScore() == receiver.getScore()) {
             return scoreToString(server.getScore()) + " all";
         } else {
